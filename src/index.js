@@ -1,17 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Countdown from './Countdown';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const App = () => {
+    // const reminders = [{time: 5, message: 'You have 5 seconds remaining'}, {time:2, message: 'You have 2 seconds remaining'}];
+    const onDone = () => {
+        console.log('On Done!');
+    }
+    const onTick = () => {
+        console.log('On Tick!');
+    }
+    const onReminder1 = () => {
+        console.log('On reminder 1')
+    }
+    const onReminder2 = () => {
+        console.log('On reminder 2')
+    }
+    return (
+        <div> 
+       <Countdown 
+       onTick={onTick} 
+       onDone={onDone} 
+       onReminder1={onReminder1}
+       onReminder2={onReminder2}
+       startTime={10} 
+       endTime={0} 
+       type="decrement" 
+       interval={1000} 
+       message="Happy New Year!"
+       reminder1={5}
+       reminder2={2} >
+       <h1>HEY from Children!</h1> 
+       </Countdown>
+        </div>
+    );
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+ReactDOM.render(<App/>, document.getElementById('root'));
